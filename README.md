@@ -53,7 +53,7 @@ To add a link to your *Omniverse Kit* based app go into: Extension Manager -> Ge
 
 
 
-# to run command line headless mode
+# To run command line headless mode
 use this command
 => .\app\omni.micro.bat --ext-folder ./exts --enable pano_headless --no-window
 To test Api goto 
