@@ -90,7 +90,7 @@ async def make_pano(request: NestedViewportCaptureRequestModel,) -> ViewportCapt
                         "folder": "upscale_model/upscale/media",
                         "reset_view": True,
                     }
-    # capture(renderData)
+    capture(renderData)
 
     return ViewportCaptureResponseModel(
                     success=True,
