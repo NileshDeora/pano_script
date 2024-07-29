@@ -1,11 +1,8 @@
 def validate_object(obj):
     # Define the required keys and their expected file extensions
     required_keys = {
-        'url': ['.glb'],
-        'main_vw': ['.jpg', '.jpeg', '.png'],
-        'other_vw1': ['.jpg', '.jpeg', '.png'],
-        'other_vw2': ['.jpg', '.jpeg', '.png'],
-        'other_vw3': ['.jpg', '.jpeg', '.png'],
+        'main_vw': ['.jpg', '.jpeg', '.png','.webp','.mp4'],
+        'other_vw1': ['.jpg', '.jpeg', '.png','.webp','.mp4']
     }
 
     # Check if all required keys are in the object
