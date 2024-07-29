@@ -5,10 +5,10 @@ isMainMat = False
 firstMat = ""
 from .render_image import *
 
-async def update_vw(data):
- print("model loaded")
- for x in range(10):
-    await omni.kit.app.get_app().next_update_async()
+async def update_vw(data, sa_id):
+#  print("model loaded")
+#  for x in range(10):
+#     await omni.kit.app.get_app().next_update_async()
  print("model loaded")
  global isMainMat
  global firstMat
@@ -42,7 +42,7 @@ async def update_vw(data):
 					print(textvw, textkey)
 					stage = omni.usd.get_context().get_stage()
 					target_layer = stage.GetRootLayer()
-					cube_prim = stage.GetPrimAtPath("/Environment/shop/"+textkey)
+					cube_prim = stage.GetPrimAtPath("/World/Minor_Hall_for_Pano_3_fixed/parcel_"+sa_id+"/"+textkey)
 					child = cube_prim.GetChildren()
 					childMesh = child[0].GetName()
 					#Update texture of vw
@@ -54,7 +54,7 @@ async def update_vw(data):
 					usd_context_name=Usd.Stage.Open(rootLayer=target_layer, sessionLayer=stage.GetSessionLayer(), pathResolverContext=None))
 					# Apply default material
 					omni.kit.commands.execute('BindMaterialCommand',
-					prim_path='/Environment/shop/'+textkey+'/'+childMesh,	
+					prim_path="/World/Minor_Hall_for_Pano_3_fixed/parcel_"+sa_id+"/"+textkey+"/"+childMesh,	
 					material_path='/World/Looks/'+textkey,
 					)
 
@@ -65,6 +65,6 @@ async def update_vw(data):
 
 
 
-def update_vw_fun(data):
-    asyncio.ensure_future(update_vw(data))
+def update_vw_fun(data, sa_id):
+    asyncio.ensure_future(update_vw(data, sa_id))
 	

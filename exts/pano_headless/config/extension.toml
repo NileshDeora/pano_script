@@ -32,6 +32,10 @@ preview_image = "data/preview.png"
 # Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
 icon = "data/icon.png"
 
+[python.pipapi]
+# requirements = ["opencv-python", "tensorflow", "numpy", "keras", "optree"]
+# use_online_index = true
+
 # Use omni.ui to build simple UI
 [dependencies]
 # The Main UI App
