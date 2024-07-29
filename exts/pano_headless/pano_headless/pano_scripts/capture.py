@@ -85,13 +85,13 @@ async def make_pano(request: NestedViewportCaptureRequestModel,) -> ViewportCapt
         for x in range(10):
             await omni.kit.app.get_app().next_update_async()
         
-        renderData = {
-                            "res" : '7k',
-                            "name": "7k",
-                            "folder": "upscale_model/upscale/media",
-                            "reset_view": True,
-                        }
-        capture(renderData)
+    renderData = {
+                        "res" : '7k',
+                        "name": "7k",
+                        "folder": "upscale_model/upscale/media",
+                        "reset_view": True,
+                    }
+    capture(renderData)
 
     return ViewportCaptureResponseModel(
                     success=True,
