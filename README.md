@@ -64,18 +64,48 @@ Hit the (Load usd) API Endpoint to load stage before executing the pano generate
 
 Generate Pano(http://localhost:8011/viewport-capture/make_pano)
 Hit with these params=> 
+
 {
-  "url": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/vtour/dollhouse_79_2024_04_10_07_56_03/model.glb",
-  "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6785_2_1714486077637.png",
-  "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6786_2_1714486788541.png",
-  "other_vw2": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6787_2_1714639976079.png",
-  "other_vw3": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6788_2_1714487401706.png"
+  "1": [
+    {
+      "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6785_2_1714486077637.png",
+      "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6786_2_1714486788541.png",
+      "shop_id" : 1
+    },
+    {
+      "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6861_2_1719302956264.png",
+      "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6861_2_1719302956264.png",
+      "shop_id" : 2
+    },
+    {
+      "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6862_2_1719303343962.png",
+      "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6862_2_1719303343962.png",
+      "shop_id" : 3
+    
+},
+    {
+      "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6863_2_1719303991858.png",
+      "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6863_2_1719303991858.png",
+      "shop_id" : 4
+    
+},
+    {
+      "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6864_2_1719304012209.png",
+      "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6864_2_1719304012209.png",
+      "shop_id" : 5
+    },
+    {
+      "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6865_2_1719304033230.png",
+      "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1524_6865_2_1719304033230.png",
+      "shop_id" : 6
+    }
+  ]
 }
+
+
 
 response will be
 Response body
 {
-  "success": true,
-  "captured_image_path": "c:\\users\\neil\\downloads\\omni learning\\headless_microservice_pano\\pano_headless\\exts\\pano_headless\\pano_headless/output/pano.png",
-  "error_message": "Success!"
+  "success": true
 }
