@@ -64,18 +64,15 @@ Hit the (Load usd) API Endpoint to load stage before executing the pano generate
 
 Generate Pano(http://localhost:8011/viewport-capture/make_pano)
 Hit with these params=> 
+main hall data
 {
-  "url": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/vtour/dollhouse_79_2024_04_10_07_56_03/model.glb",
-  "main_vw": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6785_2_1714486077637.png",
-  "other_vw1": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6786_2_1714486788541.png",
-  "other_vw2": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6787_2_1714639976079.png",
-  "other_vw3": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1514_6788_2_1714487401706.png"
+  "videowall_01": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1516_6827_2_1716556123257.png",
+  "videowall_02": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1516_6826_2_1716556086755.png",
+  "videowall_03": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1516_6800_2_1716556059656.png",
+  "videowall_04": "https://d1g1kk4lk1ysdx.cloudfront.net/wikipoint/image/prev_1516_6798_2_1716556044496.png"
 }
-
 response will be
 Response body
 {
   "success": true,
-  "captured_image_path": "c:\\users\\neil\\downloads\\omni learning\\headless_microservice_pano\\pano_headless\\exts\\pano_headless\\pano_headless/output/pano.png",
-  "error_message": "Success!"
 }
