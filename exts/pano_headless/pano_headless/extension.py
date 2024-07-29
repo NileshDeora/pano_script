@@ -6,6 +6,9 @@ from .pano_scripts.load_usd import *
 # from .pano_scripts.update_vw import *
 # from .pano_scripts.set_viewport_res import *
 # from .pano_scripts.render_image import *
+# from .parallax_scripts.shopping_area.grid import *
+from .parallax_scripts.shopping_area.capture_walls import *
+from .pano_scripts.upscale_image import *
 from omni.services.core import main
 import omni.usd
 from .routes.routes import *
@@ -35,8 +38,10 @@ def list_meshes():
 
 class PanoExtension(omni.ext.IExt):
     def on_startup(self, ext_id):
-        print("pano startup")
+        # print("pano startup", omni.kit.window.content_browser)
         initRoutes(self, ext_id)
+        # upscale()
+        # capture_walls_await() 
         # ext_name = ext_id.split("-")[0]
         # url_prefix = carb.settings.get_settings().get_as_string(f"exts/{ext_name}/url_prefix")
         # print(url_prefix,ext_name)
