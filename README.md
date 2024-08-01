@@ -61,8 +61,9 @@ To test Api goto
 
 Hit the (Load usd) API Endpoint to load stage before executing the pano generate api
 =>output => "Stage loaded."
+'GET' \'http://localhost:8011/load_usd' \
 
-Generate Pano(http://localhost:8011/viewport-capture/make_pano)
+To Generate Pano(http://localhost:8011/viewport-capture/make_pano)
 Hit with these params=> 
 
 {
