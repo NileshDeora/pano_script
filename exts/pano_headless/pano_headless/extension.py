@@ -7,7 +7,7 @@ from .pano_scripts.load_usd import *
 # from .pano_scripts.set_viewport_res import *
 # from .pano_scripts.render_image import *
 # from .parallax_scripts.shopping_area.grid import *
-# from .parallax_scripts.shopping_area.capture_walls import *
+from .parallax_scripts.shopping_area.capture_walls import *
 from .pano_scripts.upscale_image import *
 from omni.services.core import main
 import omni.usd

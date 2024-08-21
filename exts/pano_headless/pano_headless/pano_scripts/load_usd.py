@@ -10,8 +10,8 @@ async def open_usd_project():
 	# omni.usd.get_context().open_stage("https://wikipoint.s3.eu-west-1.amazonaws.com/development/file/pano_service.usd", load_set=omni.usd.UsdContextInitialLoadSet.LOAD_NONE)
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
-    file_name = '/stages/lateral_hall_stage/lateral_hall.usd'
-    # file_name = '/stages/pano_service.usd'
+    # file_name = '/stages/lateral_hall_stage/main_hall_new.usd'
+    file_name = '/stages/mall_district_stage/mall_district.usd'
     print(parent_dir+file_name)
 
 	#async version

@@ -5,7 +5,7 @@ isMainMat = False
 firstMat = ""
 from .render_image import *
 
-async def update_vw(data, sa_id):
+async def update_vw(data):
 #  print("model loaded")
 #  for x in range(10):
 #     await omni.kit.app.get_app().next_update_async()
@@ -18,7 +18,8 @@ async def update_vw(data, sa_id):
 			def createTexture(vw):
 				global isMainMat
 				global firstMat
-
+				stage = omni.usd.get_context().get_stage()
+				target_layer = stage.GetRootLayer()
 				if isMainMat:
 						omni.kit.commands.execute('CopyPrim',
 					path_from='/World/Looks/'+firstMat,
@@ -42,9 +43,13 @@ async def update_vw(data, sa_id):
 					print(textvw, textkey)
 					stage = omni.usd.get_context().get_stage()
 					target_layer = stage.GetRootLayer()
-					cube_prim = stage.GetPrimAtPath("/World/Minor_Hall_for_Pano_3_fixed/parcel_"+sa_id+"/"+textkey)
+					cube_prim = stage.GetPrimAtPath("/World/Main_hall_update_June_24_high2_v4/"+textkey)
+					# /World/Main_hall_update_June_24_high2_v4/videowall_02
+					print('cube_prim', cube_prim)
 					child = cube_prim.GetChildren()
 					childMesh = child[0].GetName()
+					print("name",childMesh)
+
 					#Update texture of vw
 					omni.kit.commands.execute('ChangeProperty',
 					prop_path=Sdf.Path('/World/Looks/'+textkey+'/Shader.inputs:diffuse_texture'),
@@ -52,9 +57,18 @@ async def update_vw(data, sa_id):
 					prev=None,
 					target_layer=target_layer,
 					usd_context_name=Usd.Stage.Open(rootLayer=target_layer, sessionLayer=stage.GetSessionLayer(), pathResolverContext=None))
+					
+					omni.kit.commands.execute('ChangeProperty',
+					prop_path=Sdf.Path("/World/Looks/"+key+"/Shader.inputs:uv_space_index"),
+					value=1,
+					prev=0,
+					target_layer=target_layer,
+					usd_context_name=Usd.Stage.Open(rootLayer=target_layer, sessionLayer=stage.GetSessionLayer(), pathResolverContext=None))
+
+
 					# Apply default material
 					omni.kit.commands.execute('BindMaterialCommand',
-					prim_path="/World/Minor_Hall_for_Pano_3_fixed/parcel_"+sa_id+"/"+textkey+"/"+childMesh,	
+					prim_path="/World/Main_hall_update_June_24_high2_v4/"+textkey+"/"+childMesh,	
 					material_path='/World/Looks/'+textkey,
 					)
 
@@ -65,6 +79,6 @@ async def update_vw(data, sa_id):
 
 
 
-def update_vw_fun(data, sa_id):
-    asyncio.ensure_future(update_vw(data, sa_id))
+def update_vw_fun(data):
+    asyncio.ensure_future(update_vw(data))
 	

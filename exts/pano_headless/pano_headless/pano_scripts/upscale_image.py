@@ -6,7 +6,8 @@ from PIL import Image
 def resize(path):
     with Image.open(path) as img:
         # Resize the image
-        resized_img = img.resize((2880, 1620))
+        # resized_img = img.resize((5120, 2880))
+        resized_img = img.resize((4096, 2160))
         width = resized_img.width
         height = resized_img.height
         new_width = width
@@ -19,7 +20,7 @@ def resize(path):
 
     print(f"Image resized to 4k and saved.")
     upscale()
-    
+
 
 async def upscale_img():
     print("Upscaling render..")
@@ -40,7 +41,7 @@ async def upscale_img():
     # Print the output and error (if any)
     print("Output:", result.stdout)
     print("Error:", result.stderr)
-    print("upscale done")   
+    print("upscale done")
 
 
 def upscale():

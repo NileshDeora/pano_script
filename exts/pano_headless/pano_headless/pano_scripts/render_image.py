@@ -52,7 +52,7 @@ async def capture_frame(outdata):
         elif res == "6k":
             return [5000 , 500]
         elif res == "7k":
-            return [5000 , 500]
+            return [6000 , 500]
         elif res == "8k":
             return [5000 , 500]
         elif res == "9k":

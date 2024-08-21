@@ -1,8 +1,11 @@
 def validate_object(obj):
     # Define the required keys and their expected file extensions
     required_keys = {
-        'main_vw': ['.jpg', '.jpeg', '.png','.webp','.mp4'],
-        'other_vw1': ['.jpg', '.jpeg', '.png','.webp','.mp4']
+        'videowall_01': ['.jpg', '.jpeg', '.png','.webp','.mp4'],
+        'videowall_02': ['.jpg', '.jpeg', '.png','.webp','.mp4'],
+        # 'videowall_03': ['.jpg', '.jpeg', '.png','.webp','.mp4'],
+        # 'videowall_04': ['.jpg', '.jpeg', '.png','.webp','.mp4']
+    
     }
 
     # Check if all required keys are in the object

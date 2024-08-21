@@ -8,7 +8,6 @@ from ..pano_scripts.set_viewport_res import *
 from ..pano_scripts.render_image import *
 from ..pano_scripts.validation import *
 # import carb
-from omni.kit.viewport.utility import get_active_viewport
 
 from omni.services.core import routers
 
@@ -17,21 +16,26 @@ router = routers.ServiceAPIRouter()
 
 
 class ViewportCaptureRequestModel(BaseModel):
-    main_vw: str = Field(
+    videowall_01: str = Field(
         ...,
-        title="main_vw Url",
+        title="videowall_01",
         description="url",
     )
-    other_vw1: str = Field(
+    videowall_02: str = Field(
     ...,
-    title="other_vw1 Url",
+    title="videowall_02",
     description="url",
     )
-    shop_id: str = Field(
-    ...,
-    title="shop id",
-    description="id",
-    )
+    # videowall_03: str = Field(
+    # ...,
+    # title="videowall_03",
+    # description="url",
+    # )
+    # videowall_04: str = Field(
+    # ...,
+    # title="videowall_04",
+    # description="url",
+    # )
   
   
     # If required, add additional capture response options in subsequent iterations.
@@ -69,41 +73,32 @@ class NestedViewportCaptureRequestModel(BaseModel):
     description="Capture a given USD stage as an image.",
     response_model=ViewportCaptureResponseModel,
 )
-async def make_pano(request: NestedViewportCaptureRequestModel,) -> ViewportCaptureResponseModel:
-    root_dict = request.__root__
-    for sa_id, sa_data in root_dict.items():
-        print('key', sa_id)
-        setup_camera_fun(sa_id)
-        if sa_id in root_dict:
-            if len(root_dict[sa_id]) > 0:
-                for shop in root_dict[sa_id]:
-                    print('shop data',shop)
-                    await applyVW(shop, sa_id)
-        else:
-            print(f"Key '{sa_id}' not found in the request")
-        
-        for x in range(10):
-            await omni.kit.app.get_app().next_update_async()
-        
-        renderData = {
-                            "res" : '7k',
-                            "name": "7k",
-                            "folder": "upscale_model/upscale/media",
-                            "reset_view": True,
-                        }
-        capture(renderData)
 
+async def make_pano(request: ViewportCaptureRequestModel,) -> ViewportCaptureResponseModel:
+    print(request)
+    await applyVW(request)
+    
+
+    for x in range(10):
+        await omni.kit.app.get_app().next_update_async()
+    renderData = {
+            "res" : '7k',
+            "name": "7k",
+            "folder": "upscale_model/upscale/media",
+            "reset_view": True,
+            }
+    capture(renderData)
     return ViewportCaptureResponseModel(
                     success=True,
                 )
 
-
-
     
-async def applyVW(request, sa_id):
+async def applyVW(request):
     data = {
-        "main_vw": request.main_vw,
-        "other_vw1": request.other_vw1,
+        "videowall_01": request.videowall_01,
+        "videowall_02": request.videowall_02,
+        # "videowall_03": request.videowall_03,
+        # "videowall_04": request.videowall_04,
     }
     print("applyvWWWW")
     try:
@@ -112,12 +107,14 @@ async def applyVW(request, sa_id):
             
             panoData = [{
             "vw_data": [
-            { "sa"+sa_id+"_s"+ request.shop_id +"_"+"main_vw": request.main_vw},
-            {"sa"+sa_id+"_s"+ request.shop_id +"_"+"other_vw1":request.other_vw1},
+            { "videowall_01": request.videowall_01},
+            {"videowall_02": request.videowall_02},
+            # {"videowall_03": request.videowall_03},
+            # {"videowall_04": request.videowall_04},
+
             ]
             }
             ]
-            print(panoData)
             # set_viewport_res()
             # current_dir = os.path.dirname(os.path.abspath(__file__))
             # parent_dir = os.path.dirname(current_dir) + '/output/'
@@ -126,12 +123,27 @@ async def applyVW(request, sa_id):
             # outPath = parent_dir+file_name
             # capture(outPath).
             stage = omni.usd.get_context().get_stage()
-            for data in  panoData:   
-                update_vw_fun(data["vw_data"], sa_id)
-                for x in range(10):
-                    await omni.kit.app.get_app().next_update_async()
-  
+            isUsdLoad = stage.GetPrimAtPath("/Environment/Camera")
+            # print('isUsdLoad', isUsdLoad)
+            if isUsdLoad:
+                for data in  panoData:   
+                    # loadmodel_fun(data)
+                    # setup_camera_fun()
+                    # update_vw_fun(data["vw_data"])
+                    for x in range(10):
+                        await omni.kit.app.get_app().next_update_async()
+                    # def callback(success, captured_image_path):
+                    #     print(captured_image_path)
+                    
+                    # for x in range(3000):
+                    #     await omni.kit.app.get_app().next_update_async()
+                    # omni.kit.actions.core.execute_action("omni.kit.menu.edit", "capture_screenshot", callback)
+            else:
+                return ViewportCaptureResponseModel(
+                    success=False
+                )
     except ValueError as e:
+        # print(f"Validation failed: {e}")
         return ViewportCaptureResponseModel(
             success=False
         )
