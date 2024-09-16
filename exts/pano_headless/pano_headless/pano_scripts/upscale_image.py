@@ -7,19 +7,21 @@ def resize(path):
     with Image.open(path) as img:
         # Resize the image
         # resized_img = img.resize((5120, 2880))
-        resized_img = img.resize((4096, 2160))
-        width = resized_img.width
-        height = resized_img.height
+        # resized_img = img.resize((3000, 2000))
+        # resized_img = img.resize((3072, 1620))
+        
+        width = img.width
+        height = img.height
         new_width = width
         new_height = width // 2  # Ensuring the ratio is 2:1
-        image_2_1 = resized_img.resize((new_width, new_height), Image.ANTIALIAS)
+        image_2_1 = img.resize((new_width, new_height), Image.ANTIALIAS)
         print("2:1 resize done")
         # Save the resized image
         image_2_1.save(path)
 
 
     print(f"Image resized to 4k and saved.")
-    upscale()
+    # upscale()
 
 
 async def upscale_img():
@@ -33,7 +35,7 @@ async def upscale_img():
         realesrgan_path,
         "-i", upscale_proj_path+"media/",
         "-o", upscale_proj_path+"results/",
-        "-n", "realesrgan-x4plus-anime",
+        "-n", "realesrgan-x4plus",
         "-s", "4"
     ]
     # Execute the command

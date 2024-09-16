@@ -11,7 +11,7 @@ async def open_usd_project():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
     # file_name = '/stages/lateral_hall_stage/main_hall_new.usd'
-    file_name = '/stages/mall_district_stage/mall_district.usd'
+    file_name = '/stages/milan_square_stage/milan_square.usd'
     print(parent_dir+file_name)
 
 	#async version

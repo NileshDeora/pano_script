@@ -11,7 +11,7 @@ async def capture_frame(outdata):
     print("capturing pano, Start...")
     outdata["outPath"] = OutPutPath(outdata)
 
-    omni.kit.commands.execute('SelectPrims',
+    omni.kit.commands.execute('SeleyctPrims',
     old_selected_paths=['/World'],
     new_selected_paths=[],
     expand_in_stage=True)
@@ -20,12 +20,12 @@ async def capture_frame(outdata):
     await omni.kit.app.get_app().next_update_async()
     viewport = get_active_viewport()
     def switch(res):
-        if res == "1k":
-            viewport.resolution = (1920 , 1080)
         if res == "2k":
+            viewport.resolution = (1920 , 1080)
+        if res == "3k":
+            viewport.resolution = (3000 , 1571)
+        if res == "4k":
             viewport.resolution = (2*1920 , 2*1080)
-        elif res == "4k":
-            viewport.resolution = (4000 , 2250)
         elif res == "5k":
             viewport.resolution = (5120 , 2880)
         elif res == "6k":
@@ -41,20 +41,20 @@ async def capture_frame(outdata):
     await omni.kit.app.get_app().next_update_async()
 
     def switch(res):
-        if res == "1k":
-            return [200 , 10]
         if res == "2k":
-            return [200 , 10]
+            return [6000 , 500]
+        if res == "3k":
+            return [6000 , 500]
         elif res == "4k":
-            return [20000 , 500]
+            return [6000 , 500]
         elif res == "5k":
-            return [3000 , 500]
+            return [6000 , 500]
         elif res == "6k":
-            return [5000 , 500]
+            return [6000 , 500]
         elif res == "7k":
             return [6000 , 500]
         elif res == "8k":
-            return [5000 , 500]
+            return [7000 , 500]
         elif res == "9k":
             return [7000 , 1000]
         
